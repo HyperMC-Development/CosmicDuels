@@ -6,8 +6,28 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.Plugin;
 
 import me.puyodead1.cosmicduels.api.CosmicDuelsAPI;
+import me.puyodead1.cosmicduels.events.DuelSettingsClickEvent;
+import me.puyodead1.cosmicduels.events.DuelTypeClickEvent;
+import me.puyodead1.cosmicduels.itemstacks.Armor;
+import me.puyodead1.cosmicduels.itemstacks.Bounty;
+import me.puyodead1.cosmicduels.itemstacks.Bows;
+import me.puyodead1.cosmicduels.itemstacks.CosmicEnvoy;
+import me.puyodead1.cosmicduels.itemstacks.DeathCertificates;
+import me.puyodead1.cosmicduels.itemstacks.EnderPearls;
+import me.puyodead1.cosmicduels.itemstacks.Fix;
+import me.puyodead1.cosmicduels.itemstacks.Fly;
+import me.puyodead1.cosmicduels.itemstacks.FoodLoss;
+import me.puyodead1.cosmicduels.itemstacks.GoldenApple;
+import me.puyodead1.cosmicduels.itemstacks.Healing;
+import me.puyodead1.cosmicduels.itemstacks.KitSelect;
+import me.puyodead1.cosmicduels.itemstacks.Mcmmo;
+import me.puyodead1.cosmicduels.itemstacks.Potions;
+import me.puyodead1.cosmicduels.itemstacks.RiskInventory;
+import me.puyodead1.cosmicduels.itemstacks.Weapons;
 
 public class DuelCommand implements CommandExecutor {
 
@@ -59,7 +79,7 @@ public class DuelCommand implements CommandExecutor {
 					Player player = Bukkit.getPlayerExact(args[0]);
 					if (!(player == null)) {
 						Player playerSender = (Player) sender;
-						CosmicDuelsAPI.createDuelSettingsGUI(playerSender);
+						playerSender.openInventory(CosmicDuelsAPI.createDuelSettingsGUI(playerSender));
 						// start invite process
 					} else {
 						sender.sendMessage(ChatColor.RED + "Error: " + "'" + args[0] + "'" + " is not a valid player!");

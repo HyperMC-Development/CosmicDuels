@@ -1,5 +1,9 @@
 package me.puyodead1.cosmicduels.events;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,20 +29,53 @@ import me.puyodead1.cosmicduels.itemstacks.RiskInventory;
 import me.puyodead1.cosmicduels.itemstacks.Weapons;
 
 public class DuelSettingsClickEvent implements Listener {
-	boolean goldenApplesToggled = true;
-	boolean mcmmoToggled = true;
-	boolean potionsToggled = true;
-	boolean bowsToggled = true;
-	boolean foodLossToggled = true;
-	boolean enderPearls = true;
-	boolean riskInventory = false;
-	boolean bounty = false;
-	boolean armor = true;
-	boolean weapons = true;
-	boolean fix = true;
-	boolean fly = false;
-	boolean cosmicEnvoy = false;
-	boolean deathCertif = true;
+	public static boolean goldenApplesToggled = true;
+	public static boolean mcmmoToggled = true;
+	public static boolean potionsToggled = true;
+	public static boolean bowsToggled = true;
+	public static boolean foodLossToggled = true;
+	public static boolean enderPearls = true;
+	public static boolean riskInventory = false;
+	public static boolean bounty = false;
+	public static boolean armor = true;
+	public static boolean weapons = true;
+	public static boolean fix = true;
+	public static boolean fly = false;
+	public static boolean cosmicEnvoy = false;
+	public static boolean deathCertif = true;
+	
+	public static ArrayList<Boolean> booleans = new ArrayList<Boolean>();
+	public static void resetBooleans() {
+		booleans.add(goldenApplesToggled);
+		booleans.add(mcmmoToggled);
+		booleans.add(potionsToggled);
+		booleans.add(bowsToggled);
+		booleans.add(foodLossToggled);
+		booleans.add(enderPearls);
+		booleans.add(riskInventory);
+		booleans.add(bounty);
+		booleans.add(armor);
+		booleans.add(weapons);
+		booleans.add(fix);
+		booleans.add(fly);
+		booleans.add(cosmicEnvoy);
+		booleans.add(deathCertif);
+		
+		goldenApplesToggled = true;
+		mcmmoToggled = true;
+		potionsToggled = true;
+		bowsToggled = true;
+		foodLossToggled = true;
+		enderPearls = true;
+		riskInventory = false;
+		bounty = false;
+		armor = true;
+		weapons = true;
+		fix = true;
+		fly = false;
+		cosmicEnvoy = false;
+		deathCertif = true;
+	}
 
 	@EventHandler
 	public void onGoldenAppleClick(InventoryClickEvent e) {
@@ -70,7 +107,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onMcmmoClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().equalsIgnoreCase("Duel Settings")) {
@@ -99,7 +136,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onPotionClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -128,7 +165,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onBowClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -157,6 +194,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
+
 	@EventHandler
 	public void onHealingClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -185,7 +223,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onFoodLossClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -214,7 +252,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onEnderPearlsClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -243,7 +281,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onRiskInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -272,7 +310,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onBountyInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -301,7 +339,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onArmorInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -330,8 +368,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
-	
+
 	@EventHandler
 	public void onWeaponInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -360,7 +397,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onFixInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -389,7 +426,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onFlyInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -418,7 +455,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onCosmicEnvoyInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -447,7 +484,7 @@ public class DuelSettingsClickEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onDeathCertifInventoryClick(InventoryClickEvent e) {
 		if (e.getClickedInventory().getName().contains("Duel Settings")) {
@@ -477,4 +514,14 @@ public class DuelSettingsClickEvent implements Listener {
 		}
 	}
 
+	@EventHandler
+	public void onKitSelectionClick(InventoryClickEvent e) {
+		if (e.getClickedInventory().getName().contains("Duel Settings")) {
+			if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Kit")) {
+				e.setCancelled(true);
+				Player player = (Player) e.getWhoClicked();
+				Inventory inv = CosmicDuelsAPI.createKitSelectionGUI(player);
+			}
+		}
+	}
 }
