@@ -14,12 +14,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.puyodead1.cosmicduels.itemstacks.Armor;
 import me.puyodead1.cosmicduels.itemstacks.Bounty;
 import me.puyodead1.cosmicduels.itemstacks.Bows;
+import me.puyodead1.cosmicduels.itemstacks.CosmicEnvoy;
+import me.puyodead1.cosmicduels.itemstacks.DeathCertificates;
 import me.puyodead1.cosmicduels.itemstacks.EnderPearls;
 import me.puyodead1.cosmicduels.itemstacks.Fix;
+import me.puyodead1.cosmicduels.itemstacks.Fly;
 import me.puyodead1.cosmicduels.itemstacks.FoodLoss;
 import me.puyodead1.cosmicduels.itemstacks.GlassPane;
 import me.puyodead1.cosmicduels.itemstacks.GoldenApple;
 import me.puyodead1.cosmicduels.itemstacks.Healing;
+import me.puyodead1.cosmicduels.itemstacks.KitSelect;
 import me.puyodead1.cosmicduels.itemstacks.Mcmmo;
 import me.puyodead1.cosmicduels.itemstacks.Potions;
 import me.puyodead1.cosmicduels.itemstacks.RiskInventory;
@@ -57,6 +61,11 @@ public class CosmicDuelsAPI {
 		inv.setItem(10, new Armor().armorEnabled());
 		inv.setItem(11, new Weapons().weaponsEnabled());
 		inv.setItem(12, new Fix().fixEnabled());
+		inv.setItem(14, new Fly().flyDisabled());
+		inv.setItem(15, new CosmicEnvoy().cosmicEnvoyDisabled());
+		inv.setItem(16, new DeathCertificates().deathCertifEnabled()); 	
+		inv.setItem(18, new KitSelect().kitSelect());
+		inv.setItem(26, new KitSelect().kitSelect());
 
 		inv.setItem(9, new GlassPane().grayGlassPane());
 		inv.setItem(13, new GlassPane().grayGlassPane());

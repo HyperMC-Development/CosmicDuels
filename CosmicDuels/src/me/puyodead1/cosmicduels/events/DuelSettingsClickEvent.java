@@ -10,8 +10,11 @@ import me.puyodead1.cosmicduels.api.CosmicDuelsAPI;
 import me.puyodead1.cosmicduels.itemstacks.Armor;
 import me.puyodead1.cosmicduels.itemstacks.Bounty;
 import me.puyodead1.cosmicduels.itemstacks.Bows;
+import me.puyodead1.cosmicduels.itemstacks.CosmicEnvoy;
+import me.puyodead1.cosmicduels.itemstacks.DeathCertificates;
 import me.puyodead1.cosmicduels.itemstacks.EnderPearls;
 import me.puyodead1.cosmicduels.itemstacks.Fix;
+import me.puyodead1.cosmicduels.itemstacks.Fly;
 import me.puyodead1.cosmicduels.itemstacks.FoodLoss;
 import me.puyodead1.cosmicduels.itemstacks.GlassPane;
 import me.puyodead1.cosmicduels.itemstacks.GoldenApple;
@@ -33,6 +36,9 @@ public class DuelSettingsClickEvent implements Listener {
 	boolean armor = true;
 	boolean weapons = true;
 	boolean fix = true;
+	boolean fly = false;
+	boolean cosmicEnvoy = false;
+	boolean deathCertif = true;
 
 	@EventHandler
 	public void onGoldenAppleClick(InventoryClickEvent e) {
@@ -366,7 +372,7 @@ public class DuelSettingsClickEvent implements Listener {
 					GlassPane.fixStat = "§a§lON";
 					Fix.lore = "§a§lENABLED";
 					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
-					inv.setItem(11, new Fix().fixEnabled());
+					inv.setItem(12, new Fix().fixEnabled());
 					inv.setItem(22, new GlassPane().greenGlassPane());
 					e.getWhoClicked().sendMessage(String.valueOf(fix));
 				} else {
@@ -378,7 +384,94 @@ public class DuelSettingsClickEvent implements Listener {
 					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
 					inv.setItem(12, new Fix().fixDisabled());
 					inv.setItem(22, new GlassPane().greenGlassPane());
-					e.getWhoClicked().sendMessage(String.valueOf(weapons));
+					e.getWhoClicked().sendMessage(String.valueOf(fix));
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onFlyInventoryClick(InventoryClickEvent e) {
+		if (e.getClickedInventory().getName().contains("Duel Settings")) {
+			if (e.getCurrentItem().getItemMeta().getDisplayName().contains("/fly")) {
+				if (fly == false) {
+					fly = true;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.flyStat = "§a§lON";
+					Fly.lore = "§a§lENABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(14, new Fly().flyEnabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(fly));
+				} else {
+					fly = false;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.flyStat = "§c§lOFF";
+					Fly.lore = "§c§lDISABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(14, new Fly().flyDisabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(fly));
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onCosmicEnvoyInventoryClick(InventoryClickEvent e) {
+		if (e.getClickedInventory().getName().contains("Duel Settings")) {
+			if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Envoy")) {
+				if (cosmicEnvoy == false) {
+					cosmicEnvoy = true;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.cosmicEnvoyStat = "§a§lON";
+					CosmicEnvoy.lore = "§a§lENABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(15, new CosmicEnvoy().cosmicEnvoyEnabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(cosmicEnvoy));
+				} else {
+					cosmicEnvoy = false;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.cosmicEnvoyStat = "§c§lOFF";
+					CosmicEnvoy.lore = "§c§lDISABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(15, new CosmicEnvoy().cosmicEnvoyDisabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(cosmicEnvoy));
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onDeathCertifInventoryClick(InventoryClickEvent e) {
+		if (e.getClickedInventory().getName().contains("Duel Settings")) {
+			if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Death")) {
+				if (deathCertif == false) {
+					deathCertif = true;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.deathCertifStat = "§a§lON";
+					DeathCertificates.lore = "§a§lENABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(16, new DeathCertificates().deathCertifEnabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(deathCertif));
+				} else {
+					deathCertif = false;
+					e.setCancelled(true);
+					Player player = (Player) e.getWhoClicked();
+					GlassPane.deathCertifStat = "§c§lOFF";
+					DeathCertificates.lore = "§c§lDISABLED";
+					Inventory inv = CosmicDuelsAPI.createDuelSettingsGUI(player);
+					inv.setItem(16, new DeathCertificates().deathCertifDisabled());
+					inv.setItem(22, new GlassPane().greenGlassPane());
+					e.getWhoClicked().sendMessage(String.valueOf(deathCertif));
 				}
 			}
 		}

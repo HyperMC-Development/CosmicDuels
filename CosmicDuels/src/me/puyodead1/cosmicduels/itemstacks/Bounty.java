@@ -13,7 +13,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class Bounty {
 	
-public static String lore = "§a§lENABLED";
+public static String lore = "§c§lDISABLED";
 	
 	public ItemStack bountyEnabled() {
 		ItemStack bounty = new ItemStack(Material.GOLD_INGOT);
