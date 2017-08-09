@@ -11,7 +11,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.puyodead1.cosmicduels.events.DuelSettingsClickEvent;
+import me.McVier3ck.team.Team;
 import me.puyodead1.cosmicduels.itemstacks.Armor;
 import me.puyodead1.cosmicduels.itemstacks.Bounty;
 import me.puyodead1.cosmicduels.itemstacks.Bows;
@@ -32,11 +32,14 @@ import me.puyodead1.cosmicduels.itemstacks.RiskInventory;
 import me.puyodead1.cosmicduels.itemstacks.Weapons;
 
 public class CosmicDuelsAPI {
+	
+	Team team = new Team("test");
 
 	public static ArrayList<String> goldenAppleLore;
 
 	public static Inventory createInventory(InventoryHolder owner, int size, String title, Player player) {
 		Inventory inv = Bukkit.createInventory(owner, size, title);
+		player.openInventory(inv);
 
 		return inv;
 	}
@@ -44,7 +47,6 @@ public class CosmicDuelsAPI {
 	public static ArrayList<Boolean> settingsList() {
 		ArrayList<Boolean> settings = new ArrayList<Boolean>();
 		return settings;
-
 	}
 	
 	public static Inventory createKitSelectionGUI(Player player) {
@@ -61,7 +63,7 @@ public class CosmicDuelsAPI {
 	}
 
 	public static Inventory createDuelSettingsGUI(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 27, "Duel Settings");
+		Inventory inv = createInventory(null, 27, "Duel Settings", player);
 		inv.setItem(0, new GoldenApple().goldenAppleEnabled());
 		inv.setItem(1, new Mcmmo().mcmmoEnabled());
 		inv.setItem(2, new Potions().potionsEnabled());

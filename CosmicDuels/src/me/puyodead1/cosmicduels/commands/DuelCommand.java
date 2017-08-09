@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
+import me.puyodead1.cosmicduels.Main;
 import me.puyodead1.cosmicduels.api.CosmicDuelsAPI;
 import me.puyodead1.cosmicduels.events.DuelSettingsClickEvent;
 import me.puyodead1.cosmicduels.events.DuelTypeClickEvent;
@@ -42,6 +43,16 @@ public class DuelCommand implements CommandExecutor {
 				if (args.length == 1) {
 					if (args[0].equalsIgnoreCase("godset")) {
 						// open godset customization
+						return true;
+					}
+					if(args[0].equalsIgnoreCase("setarena1")) {
+						Main.getInstance().getConfig().set("Arenas.1.Locations.World", ((Player) sender).getWorld().getName());
+						Main.getInstance().getConfig().set("Arenas.1.Locations.X", ((Player) sender).getLocation().getX());
+						Main.getInstance().getConfig().set("Arenas.1.Locations.Y", ((Player) sender).getLocation().getY());
+						Main.getInstance().getConfig().set("Arenas.1.Locations.Z", ((Player) sender).getLocation().getZ());
+						Main.getInstance().saveConfig();
+						Main.getInstance().saveDefaultConfig();
+						sender.sendMessage("Added Location for Arena 1 Spawn Location.");
 						return true;
 					}
 					if (args[0].equalsIgnoreCase("help")) {
@@ -79,7 +90,9 @@ public class DuelCommand implements CommandExecutor {
 					Player player = Bukkit.getPlayerExact(args[0]);
 					if (!(player == null)) {
 						Player playerSender = (Player) sender;
-						playerSender.openInventory(CosmicDuelsAPI.createDuelSettingsGUI(playerSender));
+						player.closeInventory();
+						DuelSettingsClickEvent.resetBooleans();
+						CosmicDuelsAPI.createDuelSettingsGUI(playerSender);
 						// start invite process
 					} else {
 						sender.sendMessage(ChatColor.RED + "Error: " + "'" + args[0] + "'" + " is not a valid player!");

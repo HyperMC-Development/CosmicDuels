@@ -1,9 +1,11 @@
 package me.puyodead1.cosmicduels.events;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import me.puyodead1.cosmicduels.api.UnrankedDuel;
 import me.puyodead1.cosmicduels.itemstacks.GlassPane;
 
 public class DuelTypeClickEvent implements Listener{
@@ -17,7 +19,8 @@ public class DuelTypeClickEvent implements Listener{
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Unranked")) {
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage("Unranked duels are not implemented yet");
+				Player player = (Player) e.getWhoClicked();
+				UnrankedDuel.pairPlayerWithAnotherPlayer(player);
 			}
 		}
 		if (e.getClickedInventory().getTitle().contains("Settings")) {
